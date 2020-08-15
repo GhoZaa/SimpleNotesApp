@@ -1,4 +1,4 @@
-package com.example.simplenotesapp
+package com.example.consumerapp
 
 import android.content.Intent
 import android.database.ContentObserver
@@ -8,11 +8,10 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.simplenotesapp.adapter.NoteAdapter
-import com.example.simplenotesapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.example.simplenotesapp.db.NoteHelper
-import com.example.simplenotesapp.entity.Note
-import com.example.simplenotesapp.helper.MappingHelper
+import com.example.consumerapp.adapter.NoteAdapter
+import com.example.consumerapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
+import com.example.consumerapp.entity.Note
+import com.example.consumerapp.helper.MappingHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -27,13 +26,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var adapter: NoteAdapter
-    private lateinit var noteHelper: NoteHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.title = "Notes"
+        supportActionBar?.title = "Consumer Notes"
 
         rv_notes.layoutManager = LinearLayoutManager(this)
         rv_notes.setHasFixedSize(true)
@@ -91,6 +89,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+//        noteHelper.close()
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

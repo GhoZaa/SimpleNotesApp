@@ -1,23 +1,20 @@
-package com.example.simplenotesapp
+package com.example.consumerapp
 
 import android.content.ContentValues
-import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.simplenotesapp.db.DatabaseContract
-import com.example.simplenotesapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.example.simplenotesapp.db.DatabaseContract.NoteColumns.Companion.DATE
-import com.example.simplenotesapp.db.DatabaseContract.NoteColumns.Companion.DESCRIPTION
-import com.example.simplenotesapp.db.DatabaseContract.NoteColumns.Companion.TITLE
-import com.example.simplenotesapp.db.NoteHelper
-import com.example.simplenotesapp.entity.Note
-import com.example.simplenotesapp.helper.MappingHelper
+import androidx.appcompat.app.AppCompatActivity
+import com.example.consumerapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
+import com.example.consumerapp.db.DatabaseContract.NoteColumns.Companion.DATE
+import com.example.consumerapp.db.DatabaseContract.NoteColumns.Companion.DESCRIPTION
+import com.example.consumerapp.db.DatabaseContract.NoteColumns.Companion.TITLE
+import com.example.consumerapp.entity.Note
+import com.example.consumerapp.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_note_add_update.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,7 +24,6 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
     private var note: Note? = null
     private var position: Int = 0
     private lateinit var uriWithId: Uri
-    private lateinit var noteHelper: NoteHelper
 
     companion object {
         const val EXTRA_NOTE = "extra_note"
